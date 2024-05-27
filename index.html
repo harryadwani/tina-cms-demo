@@ -322,12 +322,11 @@
   <div
     class="sticky top-0 left-0 w-full shadow-[4px_4px_20px_rgba(0,_0,_0,_0.09)] bg-white flex justify-between items-center z-50"
     id="sticky-header">
-    <img class="ml-[10vw] w-[16vw] h-auto p-4 py-8" alt="" src="/group-21.817cd64e.svg" id="main-logo">
-
+    <img class="ml-[10vw] w-[16vw] h-auto p-4 py-8" alt="" src="{{site.logo}}" id="main-logo">
     <button class="cursor-pointer [border:none] p-2 bg-[transparent] mr-[15vw] inline-block whitespace-nowrap"
       id="get-started-1">
-      <b class="p-2 text-[1.5vw] [text-decoration:underline] font-inter text-blue-400 hover:text-blue-900">Get
-        started</b>
+      <b
+        class="p-2 text-[1.5vw] [text-decoration:underline] font-inter text-blue-400 hover:text-blue-900">{{site.get_started_text}}</b>
     </button>
   </div>
 
@@ -336,15 +335,11 @@
   <div id="secure-container">
     <div class="ml-[10vw] mt-12 font-bold text-35xl w-[44vw] font-inter relative" id="secure">
       <!-- secure -->
-      <p class="z-10">Secure Your Investment
-        Property Loan In Just
-        30 Days</p>
-
-      <!-- check-elg-btn-1 -->
+      <p class="z-10">{{main_content.main_title}}</p>
       <button
         class="button cursor-pointer [border:none] bg-royalblue rounded-29xl inline-block h-auto p-6 px-12 text-white"
         id="check-elg-btn-1">
-        Check Your Eligibility
+        {{main_content.check_eligibility}}
       </button>
 
 
@@ -765,7 +760,8 @@
 
     <!-- testimonials -->
     <div class="flex flex-col items-center relative">
-      <b class="text-[40px] leading-[40px] text-center mb-16" id="testim-heading">Testimonials</b>
+      <b class="text-[40px] leading-[40px] text-center mb-16"
+        id="testim-heading">{{testimonials.testimonials_heading}}</b>
       <div class="flex justify-between items-center w-[60vw] relative testim-container" id="testimonial-container">
         <div class="testimonial-arrow-left mr-8 cursor-pointer" onclick="prevTestimonial()">
           <div class="relative w-[51px] h-[51px]">
@@ -776,16 +772,13 @@
             </svg>
           </div>
         </div>
+        {{#each testimonials.testimonials}}
         <div
           class="shadow-[2px_4px_16px_rgba(0,_0,_0,_0.15)] rounded-[19px] bg-white w-full h-fit min-h-[35vh] text-center text-[16px] p-16 testim-text">
-          <i id="testimonial-content" class="leading-[29px] inline-block mb-6 testim-text-i">“I am extremely pleased
-            with the services provided by HomeAbroad. They helped me secure a DSCR investor cash flow mortgage loan that
-            perfectly suited my investment goals. The process was seamless, and their lender partner was knowledgeable
-            and responsive throughout. I highly recommend HomeAbroad to any real estate investor looking for a reliable
-            financing option for a rental property loan.”</i>
+          <i id="testimonial-content" class="leading-[29px] inline-block mb-6 testim-text-i">{{this.content}}</i>
           <i id="testimonial-author" class="leading-[30px] font-bold text-gray-300 mb-16 testim-text-i">
-            <p id="author-name" class="m-0">Steve Rayo</p>
-            <p id="author-detail" class="m-0">Purchased Investment Property in Cleveland, OH</p>
+            <p id="author-name" class="m-0">{{this.author}}</p>
+            <p id="author-detail" class="m-0">{{this.detail}}</p>
           </i>
         </div>
         <div class="testimonial-arrow-right ml-8 cursor-pointer" onclick="nextTestimonial()">
