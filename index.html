@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="/group-9542.689f5f05.css">
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,700&display=swap">
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
   <style>
     body {
@@ -1231,6 +1232,18 @@
 
 
   <!-- <script src="/Harsh-XD-_)%20copy.3464ddca.js"></script> -->
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
+
 </body>
 
 </html>

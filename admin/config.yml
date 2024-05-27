@@ -1,0 +1,107 @@
+backend:
+  name: git-gateway
+  branch: main # Change this to your default branch if it's not 'main'
+
+media_folder: "assets" # Folder where uploaded files should be saved
+public_folder: "/assets" # URL path for the uploaded media files
+
+collections:
+  - name: "site"
+    label: "Site"
+    files:
+      - name: "header"
+        label: "Header"
+        file: "index.html"
+        fields:
+          - label: "Logo"
+            name: "logo"
+            widget: "image"
+            default: "/group-21.817cd64e.svg"
+          - label: "Get Started Button Text"
+            name: "get_started_text"
+            widget: "string"
+            default: "Get started"
+
+      - name: "main_content"
+        label: "Main Content"
+        file: "index.html"
+        fields:
+          - label: "Main Title"
+            name: "main_title"
+            widget: "string"
+            default: "Secure Your Investment Property Loan In Just 30 Days"
+          - label: "Check Eligibility Button"
+            name: "check_eligibility"
+            widget: "string"
+            default: "Check Your Eligibility"
+          - label: "Advantages"
+            name: "advantages"
+            widget: "list"
+            fields:
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Description", name: "description", widget: "text" }
+
+      - name: "trusted_brands"
+        label: "Trusted Brands"
+        file: "index.html"
+        fields:
+          - label: "Section Title"
+            name: "section_title"
+            widget: "string"
+            default: "We Work With Trusted Brands"
+          - label: "Brands Image"
+            name: "brands_image"
+            widget: "image"
+            default: "/group-6543.1f8e26dc.svg"
+
+      - name: "testimonials"
+        label: "Testimonials"
+        file: "index.html"
+        fields:
+          - label: "Testimonials Heading"
+            name: "testimonials_heading"
+            widget: "string"
+            default: "Testimonials"
+          - label: "Testimonials"
+            name: "testimonials"
+            widget: "list"
+            fields:
+              - { label: "Content", name: "content", widget: "markdown" }
+              - { label: "Author", name: "author", widget: "string" }
+              - { label: "Detail", name: "detail", widget: "string" }
+
+      - name: "faqs"
+        label: "FAQs"
+        file: "index.html"
+        fields:
+          - label: "FAQs Heading"
+            name: "faqs_heading"
+            widget: "string"
+            default: "FAQs"
+          - label: "FAQ List"
+            name: "faq_list"
+            widget: "list"
+            fields:
+              - { label: "Question", name: "question", widget: "string" }
+              - { label: "Answer", name: "answer", widget: "markdown" }
+
+      - name: "footer"
+        label: "Footer"
+        file: "index.html"
+        fields:
+          - label: "Copyright Text"
+            name: "copyright_text"
+            widget: "string"
+            default: "© HomeAbroad Inc."
+          - label: "License"
+            name: "license"
+            widget: "string"
+            default: "NY License# 10311209401"
+          - label: "Footer Links"
+            name: "footer_links"
+            widget: "list"
+            fields:
+              - { label: "Link Text", name: "text", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+# Here you configure each part of your page that you want to be editable through the CMS.
+# Fields like 'widget: image' are placeholders for actual images, and 'widget: string' or 'widget: markdown' for text fields.
