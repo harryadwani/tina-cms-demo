@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20.413" height="19.311" viewBox="0 0 20.413 19.311"><defs><style>.a {
+  fill: none;
+  stroke: #2680ea;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2px;
+}
+</style></defs><path class="a" d="M21,18l-1,1.094a2.66,2.66,0,0,1-4,0,2.665,2.665,0,0,0-4,0M3,20H4.675a4.276,4.276,0,0,0,.964-.055,2,2,0,0,0,.578-.239,4.282,4.282,0,0,0,.721-.643L19.5,6.5a2.121,2.121,0,0,0-3-3L3.937,16.063a4.28,4.28,0,0,0-.643.721,2,2,0,0,0-.239.578A4.28,4.28,0,0,0,3,18.326Z" transform="translate(-2 -1.689)"></path></svg>
