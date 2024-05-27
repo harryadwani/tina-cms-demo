@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,700&display=swap" />
+
+    <style>
+        body {
+            font-family: Inter;
+        }
+
+        .button:hover {
+            background-color: #031b5c;
+            transition: 0.5s;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+            width: 66%;
+            max-width: 80%;
+            text-align: center;
+        }
+
+        .grid-item {
+            /* background-color: #ffffff; */
+            padding: 10px;
+            /* border: 1px solid #dab5b5; */
+            text-align: left;
+        }
+
+        .image-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-item img {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+        }
+
+        .nested-grid-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 5px;
+        }
+
+        .nested-grid-item {
+            padding: 10px 10px 10px 0px;
+            /* border: 1px solid #aaa; */
+        }
+
+        .flipped-grid-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+            width: 78%;
+            max-width: 80%;
+            text-align: left;
+        }
+
+        .flipped-grid-item {
+            /* padding: 10px; */
+            /* margin-left: 40px; */
+
+        }
+
+        .flipped-image-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            order: 2;
+            margin-top: 20px;
+            /* Make it the second item on mobile */
+        }
+
+        .flipped-image-item img {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+        }
+
+        .flipped-grid-item:nth-child(3) {
+            order: 3;
+            /* Content 2 as the third item on mobile */
+        }
+
+        .flipped-grid-item:nth-child(4) {
+            order: 4;
+            /* Content 3 as the fourth item on mobile */
+        }
+
+        @media (min-width: 768px) {
+            .flipped-grid-container {
+                grid-template-columns: 3fr 3fr;
+                /* Second column wider than the first */
+                grid-template-rows: repeat(3, auto);
+                /* gap: 20px; */
+                width: 66%;
+            }
+
+            .flipped-grid-item:nth-child(1) {
+                grid-column: 2;
+                grid-row: 1;
+            }
+
+            .flipped-grid-item:nth-child(2) {
+                grid-column: 1 / span 1;
+                grid-row: 1 / span 3;
+                order: 0;
+                /* Reset order for desktop view */
+            }
+
+            .flipped-grid-item:nth-child(3) {
+                grid-column: 2;
+                grid-row: 2;
+            }
+
+            .flipped-grid-item:nth-child(4) {
+                grid-column: 2;
+                grid-row: 3;
+            }
+        }
+
+
+
+
+
+        @media (min-width: 768px) {
+            .grid-container {
+                grid-template-columns: 3fr 2fr;
+                /* 6:4 ratio */
+                grid-template-rows: repeat(3, auto);
+                gap: 10px;
+                /* width: max-conten; */
+            }
+
+            .grid-item:nth-child(1) {
+                grid-column: 1;
+                grid-row: 1;
+            }
+
+            .grid-item:nth-child(2) {
+                grid-column: 1;
+                grid-row: 2;
+            }
+
+            .grid-item:nth-child(3) {
+                grid-column: 2 / span 1;
+                grid-row: 1 / span 3;
+            }
+
+            .grid-item:nth-child(4) {
+                grid-column: 1;
+                grid-row: 3;
+            }
+
+            .nested-grid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+
+
+        #secure-container {
+            padding-top: 40px;
+            background-image: url('/public/path-2831.svg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            width: 100%;
+            height: 75vh;
+            background-position: right 40%;
+        }
+
+        #banner {
+            padding-top: 40px;
+            background-image: url('/public/mask-group-3@2x.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            width: 100%;
+            /* height: 70vh;
+      background-position: right 40%; */
+        }
+
+        .tick-item {
+            z-index: 2;
+        }
+
+        #center-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: center;
+            margin-top: 70px;
+        }
+
+        .flipped-grid-item-right-text {
+            margin-left: 40px;
+        }
+
+        .neg-mt {
+            margin-top: -10px;
+        }
+
+        @media (max-width: 640px) {
+            .divider {
+                margin-top: 64px;
+                margin-bottom: 64px;
+            }
+
+            .flipped-grid-item-right-text {
+                margin-left: 0px;
+            }
+
+            #main-logo {
+                width: 35vw;
+                margin-left: 5vw;
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+            }
+
+            #get-started-1 {
+                width: 19vw;
+                margin-right: 9vw;
+                white-space: nowrap;
+            }
+
+            #get-started-1 b {
+                font-size: 3vw;
+            }
+
+            #secure {
+                font-size: 7vw;
+                width: 72vw;
+                margin-left: 12vw;
+                margin-top: -1rem !important;
+                margin-right: 5vw;
+            }
+
+            #check-elg-btn-1 {
+                margin-top: 0rem;
+                width: 50vw;
+                display: inline-block;
+                height: auto;
+                padding: 1rem !important;
+                padding-right: 0.5rem !important;
+                padding-left: 0.5rem !important;
+
+            }
+
+            #ticks {
+                font-size: 8px;
+                position: static;
+                margin-top: 10px;
+            }
+
+            .tick-item {
+                margin-top: 1rem;
+                line-height: 0.5rem;
+            }
+
+            .tick-text-div {
+                padding: 10px !important;
+            }
+
+            #first-house-img {
+                top: 299px;
+                width: 70vw;
+                left: -8px;
+            }
+
+            .tick-img {
+                width: 15px;
+                height: 20px;
+            }
+
+            #secure-container {
+                padding-top: 40px;
+                background-image: url('/public/path-2831.svg');
+                background-size: cover;
+                background-repeat: no-repeat;
+                width: 100%;
+                height: 30rem;
+                /* background-position: right 40%; */
+            }
+
+            #wework-text {
+                font-size: 20px;
+                width: 70vw;
+            }
+
+            #wework-img {
+                width: 85vw;
+            }
+
+            #traditional {
+                font-size: 30px;
+                line-height: 35px;
+            }
+
+            #five-quick {
+                font-size: 30px;
+                line-height: 35px;
+            }
+
+            .grid-container {
+                width: 80%;
+            }
+
+            #partner {
+                font-size: 20px;
+                line-height: 29px;
+            }
+
+            .testimonial-arrow-left,
+            .testimonial-arrow-right {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .testimonial-arrow-left {
+                margin-right: 5.5px;
+                /* Half the width of the arrow container */
+            }
+
+            .testimonial-arrow-right {
+                margin-left: 5.5px;
+                /* Half the width of the arrow container */
+            }
+
+            .testim-container {
+                width: 93vw;
+            }
+
+            .testim-text {
+                padding: 2rem;
+                width: 65%;
+                font-size: 12px;
+                min-height: 60vh;
+                transition: opacity 0.5s ease-in-out;
+            }
+
+            .testim-text-i {
+                line-height: 20px;
+            }
+
+            #testim-heading {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- sticky header -->
+    <div class="sticky top-0 left-0 w-full shadow-[4px_4px_20px_rgba(0,_0,_0,_0.09)] bg-white flex justify-between items-center z-50"
+        id="sticky-header">
+        <img class="ml-[10vw] w-[16vw] h-auto p-4 py-8" alt="" src="/public/group-21.svg" id="main-logo" />
+
+        <button class="cursor-pointer [border:none] p-2 bg-[transparent] mr-[15vw] inline-block whitespace-nowrap"
+            id="get-started-1">
+            <b class="p-2 text-[1.5vw] [text-decoration:underline] font-inter text-blue-400 hover:text-blue-900">Get
+                started</b>
+        </button>
+    </div>
+
+    <!------------------------------------------------------------------------------------------------------------------------------- -->
+
+    <div id="secure-container">
+        <div class="ml-[10vw] mt-12 font-bold text-35xl w-[44vw] font-inter relative" id="secure">
+            <!-- secure -->
+            <p class="z-10">Secure Your Investment
+                Property Loan In Just
+                30 Days</p>
+
+            <!-- check-elg-btn-1 -->
+            <button
+                class="button cursor-pointer [border:none] bg-royalblue rounded-29xl inline-block h-auto p-6 px-12 text-white"
+                id="check-elg-btn-1">
+                Check Your Eligibility
+            </button>
+
+
+
+            <!-- ticks -->
+            <style>
+                @keyframes fadeInLeft {
+                    from {
+                        opacity: 0;
+                        transform: translateX(-50px);
+                    }
+
+                    to {
+                        opacity: 1;
+                        transform: translateX(0);
+                    }
+                }
+
+                .tick-item {
+                    opacity: 0;
+                    animation-fill-mode: forwards;
+                }
+
+                .tick-item.fade-in {
+                    animation: fadeInLeft 1s ease-out forwards;
+                }
+
+                .tick-item.fade-in-1 {
+                    animation-delay: 0.5s;
+                }
+
+                .tick-item.fade-in-2 {
+                    animation-delay: 1s;
+                }
+
+                .tick-item.fade-in-3 {
+                    animation-delay: 1.5s;
+                }
+            </style>
+
+            <div class="absolute right-[-33rem] top-[5rem] flex flex-col text-[13px]" id="ticks">
+                <!-- first-house-img -->
+                <img class="w-[38vw] absolute top-[64px] left-[-208px] z-[0]" alt="" src="/public/house1.png"
+                    id="first-house-img" />
+                <div class=" shadow-[8px_8px_26px_rgba(45,_76,_126,_0.16)] rounded-2xs bg-white w-fit text-center font-inter font-semibold flex items-center ml-28 tick-item"
+                    id="direct-lender-adv">
+                    <img class="ml-[16.41px] w-[25.6px] h-[25.2px] tick-img" alt="" src="/public/path-2833.svg" />
+                    <div class="p-4 tick-text-div">
+                        Direct Lender Advantage
+                    </div>
+                </div>
+                <div class="shadow-[8px_8px_26px_rgba(45,_76,_126,_0.16)] rounded-2xs bg-white w-fit text-center font-inter font-semibold flex items-center mt-6 tick-item"
+                    id="direct-lender-adv">
+                    <img class="ml-[16.41px] w-[25.6px] h-[25.2px] tick-img" alt="" src="/public/path-2833.svg" />
+                    <div class="p-4 tick-text-div">
+                        Experienced Loan Officers
+                    </div>
+                </div>
+                <div class="shadow-[8px_8px_26px_rgba(45,_76,_126,_0.16)] rounded-2xs bg-white w-fit text-center font-inter font-semibold flex items-center mt-6 ml-20 tick-item"
+                    id=" direct-lender-adv">
+                    <img class="ml-[16.41px] w-[25.6px] h-[25.2px] tick-img" alt="" src="/public/path-2833.svg" />
+                    <div class="p-4 flex flex-col justify-start items-start text-left tick-text-div">
+                        Generated more than $250 million in passive <br>
+                        income for our real estate investors
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('load', function () {
+            const items = document.querySelectorAll('.tick-item');
+            items.forEach((item, index) => {
+                setTimeout(() => {
+                    item.classList.add('fade-in');
+                    item.classList.add(`fade-in-${index + 1}`);
+                }, index * 500);
+            });
+        });
+    </script>
+
+
+    <!------------------------------------------------------------------------------------------------------------------------------- -->
+    <div id="wework-container" class="flex flex-col items-center mt-16">
+        <b class="text-[30px] leading-[25px] text-center" id="wework-text">We
+            Work With Trusted
+            Brands</b>
+        <img class="w-[70vw] mt-12" alt="" src="/public/group-6543.svg" id="wework-img" />
+    </div>
+
+    <!------------------------------------------------------------------------------------------------------------------------------- -->
+
+    <div id="center-container" class="bg-[#F3F7FA]">
+        <!-- traditional grid -->
+        <div class="grid-container mt-12">
+            <div class="grid-item"><b id="traditional" class="text-[40px] leading-[53px]">
+                    Traditional Mortgage
+                    Options Might Not Always
+                    Fit Your Needs
+                </b></div>
+            <div class="grid-item">
+                Purchase or cash out on an investment property without using
+                your income with a Debt Service Coverage Ratio (DSCR) Loan.</div>
+            <div class="grid-item image-item">
+                <img class=" w-[30vw]  rounded-lg object-cover" alt="" src="/public/mask-group-1@2x.png" />
+            </div>
+            <div class="grid-item nested-grid-container">
+                <div class="nested-grid-item">
+                    <div class="flex justify-left items-center">
+                        <div class="rounded-3xs bg-white w-[41px] h-[41px] mr-4">
+                            <img class="p-[0.9rem] w-[14.6px]" alt="" src="/public/path-2825.svg" />
+                        </div>
+                        <div class="text-[14px] leading-[23px] font-medium text-dimgray">
+                            No Tax Returns or
+                            W2s Needed
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nested-grid-item">
+                    <div class="flex justify-left items-center">
+                        <div class="rounded-3xs bg-white w-[41px] h-[41px] mr-4">
+                            <img class="p-[0.9rem] w-[14.6px]" alt="" src="/public/path-2826.svg" />
+                        </div>
+                        <div class="text-[14px] leading-[23px] font-medium text-dimgray">
+                            Long Term Rentals, Short Term Rentals & Vacation Rentals
+                        </div>
+                    </div>
+                </div>
+                <div class="nested-grid-item">
+                    <div class="flex justify-left items-center">
+                        <div class="rounded-3xs bg-white w-[41px] h-[41px] mr-4">
+                            <img class="p-[0.9rem] w-[14.6px]" alt="" src="/public/path-2830.svg" />
+                        </div>
+                        <div class="text-[14px] leading-[23px] font-medium text-dimgray">
+                            $100K to $3M+
+                        </div>
+                    </div>
+                </div>
+                <div class="nested-grid-item">
+                    <div class="flex justify-left items-center">
+                        <div class="rounded-3xs bg-white w-[41px] h-[41px] mr-4">
+                            <img class="p-[0.9rem] w-[14.6px]" alt="" src="/public/path-2828.svg" />
+                        </div>
+                        <div class="text-[14px] leading-[23px] font-medium text-dimgray">
+                            Close in LLC
+                        </div>
+                    </div>
+                </div>
+                <div class="nested-grid-item">
+                    <div class="flex justify-left items-center">
+                        <div class="rounded-3xs bg-white w-[41px] h-[41px] mr-4">
+                            <img class="p-[0.9rem] w-[14.6px]" alt="" src="/public/path-2827.svg" />
+                        </div>
+                        <div class="text-[14px] leading-[23px] font-medium text-dimgray">
+                            620+ Credit
+                        </div>
+                    </div>
+                </div>
+                <div class="nested-grid-item">
+                    <div class="flex justify-left items-center">
+                        <div class="rounded-3xs bg-white w-[41px] h-[41px] mr-4">
+                            <img class="p-[0.9rem] w-[14.6px]" alt="" src="/public/path-2829.svg" />
+                        </div>
+                        <div class="text-[14px] leading-[23px] font-medium text-dimgray">
+                            4+ Units Allowed
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- traditional grid end-->
+
+        <!-- divider -->
+        <div class="box-border w-[68vw] h-1 border-t-[2px] border-solid border-gainsboro mt-32 mb-32 divider">
+        </div>
+
+
+        <!-- 5 quick starts -->
+
+        <script>
+            // for five quick steps section
+            function toggleStep(step) {
+                const steps = document.querySelectorAll('[id^="step"]');
+                steps.forEach(s => s.classList.add('hidden'));
+                document.getElementById(`step${step}`).classList.remove('hidden');
+
+                const circles = document.querySelectorAll('.circle-step');
+                circles.forEach(c => c.classList.remove('active-step'));
+                document.getElementById(`circle-step-${step}`).classList.add('active-step');
+            }
+        </script>
+
+        <style>
+            .circle-step {
+                position: relative;
+                width: 37px;
+                height: 37px;
+                border-radius: 50%;
+                background-color: rgb(184, 182, 182);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .circle-step.active-step {
+                background-color: #0964CA;
+            }
+
+            .circle-step.active-step::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 2px;
+                background-color: rgb(0, 119, 255);
+            }
+
+            .circle-step.active-step:not(:last-child)::after {
+                content: '';
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 2px;
+                height: 150px;
+                background-color: #0964CA;
+            }
+
+            .neg-mt {
+                margin-top: -10px;
+            }
+
+            @media (max-width: 768px) {
+                .circle-step.active-step:not(:last-child)::after {
+                    height: 219px;
+                }
+
+                .step-detail {
+                    min-height: 180px;
+                }
+
+                #five-quick-check-elg {
+                    margin-top: -10px;
+                }
+            }
+
+            @media (min-width: 768px) {
+                #five-quick-check-elg {
+                    margin-top: 10px;
+                }
+            }
+        </style>
+
+        <div class="flipped-grid-container">
+            <div class="flipped-grid-item flipped-grid-item-right-text">
+                <b class="text-[40px] leading-[53px]" id="five-quick">
+                    5 quick steps to start DSCR Loan Process
+                </b>
+            </div>
+            <div class="flipped-grid-item flipped-image-item">
+                <img class="w-[31vw] h-[80vh] object-cover rounded-lg" alt="" src="/public/mask-group-2@2x.png" />
+            </div>
+            <div class="flipped-grid-item flipped-grid-item-right-text">
+                <div class="container mx-auto my-5">
+                    <div class="">
+                        <div class="text-white cursor-pointer" onclick="toggleStep(1)">
+                            <div class="flex items-center relative">
+                                <div class="circle-step transform min-w-[37px] h-[37px] mr-4 active-step"
+                                    id="circle-step-1">
+                                    <b
+                                        class="absolute inset-0 flex items-center justify-center leading-[30px] text-white text-center text-[14px]">1</b>
+                                </div>
+                                <b class="text-[16px] text-dimgray">Submit your basic details</b>
+                            </div>
+                        </div>
+                        <div id="step1" class="border border-blue-500">
+                            <p>
+                            <div
+                                class="text-[14px] leading-[24px] text-dimgray ml-[55px] neg-mt step-detail min-h-[90px]">
+                                Just fill out the form to get started. Share your specific needs, and our support team
+                                will be in
+                                touch to offer guidance, connecting you with tailored mortgage solutions and specialised
+                                agents ready
+                                to help.
+                            </div>
+                            </p>
+                        </div>
+                        <div>
+                            <div class="text-white cursor-pointer" onclick="toggleStep(2)">
+                                <h2 class="text-lg">
+                                    <div class="flex items-center relative">
+                                        <div class="circle-step transform min-w-[37px] h-[37px] mr-4"
+                                            id="circle-step-2">
+                                            <b
+                                                class="absolute inset-0 flex items-center justify-center leading-[30px] text-white text-center text-[14px]">2</b>
+                                        </div>
+                                        <b class="text-[16px] text-dimgray">Talk to our loan officer</b>
+                                    </div>
+                                </h2>
+                            </div>
+                            <div id="step2" class="hidden border border-blue-500">
+                                <p>
+                                <div
+                                    class="text-[14px] leading-[24px] text-dimgray ml-[55px] neg-mt step-detail min-h-[90px]">
+                                    Speak to our experienced loan officers to discuss your needs and explore your
+                                    options. We're here to
+                                    guide you through every step of the process.
+                                </div>
+                                </p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="text-white cursor-pointer" onclick="toggleStep(3)">
+                                <h2 class="text-lg">
+                                    <div class="flex items-center relative">
+                                        <div class="circle-step transform min-w-[37px] h-[37px] mr-4"
+                                            id="circle-step-3">
+                                            <b
+                                                class="absolute inset-0 flex items-center justify-center leading-[30px] text-white text-center text-[14px]">3</b>
+                                        </div>
+                                        <b class="text-[16px] text-dimgray">Find the right investment property</b>
+                                    </div>
+                                </h2>
+                            </div>
+                            <div id="step3" class="hidden border border-blue-500">
+                                <p>
+                                <div
+                                    class="text-[14px] leading-[24px] text-dimgray ml-[55px] neg-mt step-detail min-h-[90px]">
+                                    Discover the perfect investment property with the help of our expert real estate
+                                    agents. We'll help
+                                    you find opportunities that match your financial goals.
+                                </div>
+                                </p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="text-white cursor-pointer" onclick="toggleStep(4)">
+                                <h2 class="text-lg">
+                                    <div class="flex items-center relative">
+                                        <div class="circle-step transform min-w-[37px] h-[37px] mr-4"
+                                            id="circle-step-4">
+                                            <b
+                                                class="absolute inset-0 flex items-center justify-center leading-[30px] text-white text-center text-[14px]">4</b>
+                                        </div>
+                                        <b class="text-[16px] text-dimgray">Apply for the DSCR loan</b>
+                                    </div>
+                                </h2>
+                            </div>
+                            <div id="step4" class="hidden border border-blue-500">
+                                <p>
+                                <div
+                                    class="text-[14px] leading-[24px] text-dimgray ml-[55px] neg-mt step-detail min-h-[90px]">
+                                    Complete your DSCR loan application with ease. Our streamlined process ensures a
+                                    smooth and
+                                    hassle-free experience.
+                                </div>
+                                </p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="text-white cursor-pointer" onclick="toggleStep(5)">
+                                <h2 class="text-lg">
+                                    <div class="flex items-center relative">
+                                        <div class="circle-step transform min-w-[37px] h-[37px] mr-4"
+                                            id="circle-step-5">
+                                            <b
+                                                class="absolute inset-0 flex items-center justify-center leading-[30px] text-white text-center text-[14px]">5</b>
+                                        </div>
+                                        <b class="text-[16px] text-dimgray">Property’s Income ≥ Monthly Mortgage
+                                            Payment, Loan Approved</b>
+                                    </div>
+                                </h2>
+                            </div>
+                            <div id="step5" class="hidden border border-blue-500">
+                                <p>
+                                <div
+                                    class="text-[14px] leading-[24px] text-dimgray ml-[55px] neg-mt step-detail min-h-[90px]">
+                                    Once your property's income meets or exceeds the monthly mortgage payment, your loan
+                                    approval is
+                                    secured. It's that simple!
+                                </div>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flipped-grid-item flipped-grid-item-right-text">
+                <div class="rounded-29xl bg-royalblue w-[290px] h-[50px] flex items-center justify-center button cursor-pointer"
+                    id="five-quick-check-elg">
+                    <b class="text-[14px] text-white text-center">Check Your Eligibility</b>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <!-- partner start -->
+
+        <!-- divider -->
+        <div class="box-border w-[68vw] h-1 border-t-[0px] border-solid  mt-16 mb-16 divider">
+        </div>
+
+        <!-- <img class="left-[0px] w-[100vw] h-[47.5vh]" alt="" src="/public/mask-group-3@2x.png" /> -->
+        <div id="banner" class="flex flex-col justify-center items-center">
+            <b class="text-[30px] leading-[50px] text-white text-center mb-4 p-4" id="partner">
+                <p class="m-0">
+                    Partner with our expert team, committed to securing the
+                </p>
+                <p class="m-0">financing you need when traditional banks fall short!</p>
+            </b>
+            <div
+                class="rounded-29xl bg-black w-[200px] h-[65px] flex items-center justify-center mb-16 button cursor-pointer">
+                <b class="text-[14px] text-white text-center">Check Your Eligibility</b>
+            </div>
+        </div>
+
+
+        <!-- divider -->
+        <div class="box-border w-[68vw] h-1 border-t-[0px] border-solid  mt-16 mb-16 divider">
+        </div>
+
+
+        <!-- testimonials -->
+        <div class="flex flex-col items-center relative">
+            <b class="text-[40px] leading-[40px] text-center mb-16" id="testim-heading">Testimonials</b>
+            <div class="flex justify-between items-center w-[60vw] relative testim-container"
+                id="testimonial-container">
+                <div class="testimonial-arrow-left mr-8 cursor-pointer" onclick="prevTestimonial()">
+                    <div class="relative w-[51px] h-[51px]">
+                        <svg id="arrow-left" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="0.5" stroke="currentColor" class="size-12">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="m11.25 9-3 3m0 0 3 3m-3-3h7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                    </div>
+                </div>
+                <div
+                    class="shadow-[2px_4px_16px_rgba(0,_0,_0,_0.15)] rounded-[19px] bg-white w-full h-fit min-h-[35vh] text-center text-[16px] p-16 testim-text">
+                    <i id="testimonial-content" class="leading-[29px] inline-block mb-6 testim-text-i">“I am extremely
+                        pleased
+                        with the services provided by HomeAbroad. They helped me secure a DSCR investor cash flow
+                        mortgage loan that
+                        perfectly suited my investment goals. The process was seamless, and their lender partner was
+                        knowledgeable
+                        and responsive throughout. I highly recommend HomeAbroad to any real estate investor looking for
+                        a reliable
+                        financing option for a rental property loan.”</i>
+                    <i id="testimonial-author" class="leading-[30px] font-bold text-gray-300 mb-16 testim-text-i">
+                        <p id="author-name" class="m-0">Steve Rayo</p>
+                        <p id="author-detail" class="m-0">Purchased Investment Property in Cleveland, OH</p>
+                    </i>
+                </div>
+                <div class="testimonial-arrow-right ml-8 cursor-pointer" onclick="nextTestimonial()">
+                    <div class="relative w-[51px] h-[51px]">
+                        <svg id="arrow-right" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="0.5" stroke="currentColor" class="size-12" style="color: rgb(96, 180, 251);">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <!-- Dot Navigation -->
+            <div class="dot-navigation mt-8 flex">
+                <span class="dot" onclick="goToTestimonial(0)"></span>
+                <span class="dot" onclick="goToTestimonial(1)"></span>
+                <span class="dot" onclick="goToTestimonial(2)"></span>
+                <span class="dot" onclick="goToTestimonial(3)"></span>
+            </div>
+        </div>
+
+        <style>
+            .dot-navigation {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .dot {
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background-color: gray;
+                cursor: pointer;
+            }
+
+            .dot.active {
+                background-color: #60B4FB;
+            }
+        </style>
+
+        <script>
+            const testimonials = [
+                {
+                    content: "“I am extremely pleased with the services provided by HomeAbroad. They helped me secure a DSCR investor cash flow mortgage loan that perfectly suited my investment goals. The process was seamless, and their lender partner was knowledgeable and responsive throughout. I highly recommend HomeAbroad to any real estate investor looking for a reliable financing option for a rental property loan.”",
+                    author: "Steve Rayo",
+                    detail: "Purchased Investment Property in Cleveland, OH"
+                },
+                {
+                    content: `"Thanks to HomeAbroad, I found an incredible real estate agent who understood my investment needs and went above and beyond to find the perfect investment property for me. Their platform made it easy to connect with investor-friendly agents and lenders, and the entire experience was hassle-free. I am grateful for HomeAbroad's support and highly recommend their services to fellow investors."`,
+                    author: "Tim Rogan",
+                    detail: "Purchased Investment Property in Austin, TX"
+                },
+                {
+                    content: `"I recently decided to refinance my investment property, and HomeAbroad made the entire process smooth and efficient. They provided me with access to various DSCR loan options for cash out refinancing. I highly recommend their services to any real estate investor considering cash out refinancing with a DSCR loan."`,
+                    author: "Adam Gill",
+                    detail: "Refinanced Rental Property in Orlando, FL"
+                },
+                {
+                    content: `"HomeAbroad made it easy for me to explore different DSCR mortgage loan options and connect with real estate agents who specialize in working with investors. The team at HomeAbroad was attentive, responsive, and guided me through every step of the process. I am grateful for their expertise and highly recommend their services to anyone in the real estate investment industry"`,
+                    author: "Christina Smith",
+                    detail: "Purchased Investment Property in Katy, TX"
+                },
+            ];
+
+            let currentIndex = 0;
+
+            function updateTestimonial() {
+                const testimonial = testimonials[currentIndex];
+                const testimonialText = document.getElementById('testimonial-content');
+                const authorName = document.getElementById('author-name');
+                const authorDetail = document.getElementById('author-detail');
+
+                // Fade out the current testimonial
+                testimonialText.style.opacity = 0.5;
+                authorName.style.opacity = 0.5;
+                authorDetail.style.opacity = 0.5;
+
+                // Set timeout to change content after the transition
+                setTimeout(() => {
+                    testimonialText.innerText = testimonial.content;
+                    authorName.innerText = testimonial.author;
+                    authorDetail.innerText = testimonial.detail;
+
+                    // Fade in the new content
+                    testimonialText.style.opacity = 1;
+                    authorName.style.opacity = 1;
+                    authorDetail.style.opacity = 1;
+                }, 170); // Duration should match the CSS transition time
+
+                // Update arrow colors
+                document.getElementById('arrow-left').style.color = currentIndex > 0 ? "#60B4FB" : "gray";
+                document.getElementById('arrow-right').style.color = currentIndex < testimonials.length - 1 ? "#60B4FB" : "gray";
+
+                // Update dot navigation
+                const dots = document.querySelectorAll('.dot');
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+            }
+
+
+
+            function prevTestimonial() {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateTestimonial();
+                }
+            }
+
+            function nextTestimonial() {
+                if (currentIndex < testimonials.length - 1) {
+                    currentIndex++;
+                    updateTestimonial();
+                }
+            }
+
+            function goToTestimonial(index) {
+                currentIndex = index;
+                updateTestimonial();
+            }
+
+            // Initial testimonial load
+            updateTestimonial();
+
+            // Swipe functionality
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            function handleTouchStart(event) {
+                touchStartX = event.changedTouches[0].screenX;
+            }
+
+            function handleTouchMove(event) {
+                touchEndX = event.changedTouches[0].screenX;
+            }
+
+            function handleTouchEnd() {
+                if (touchStartX - touchEndX > 50) {
+                    nextTestimonial();
+                }
+                if (touchEndX - touchStartX > 50) {
+                    prevTestimonial();
+                }
+            }
+
+            const testimonialContainer = document.getElementById('testimonial-container');
+            testimonialContainer.addEventListener('touchstart', handleTouchStart, false);
+            testimonialContainer.addEventListener('touchmove', handleTouchMove, false);
+            testimonialContainer.addEventListener('touchend', handleTouchEnd, false);
+
+        </script>
+
+
+
+
+
+
+        <!-- divider -->
+        <div class="box-border w-[68vw] h-1 border-t-[2px] border-solid border-gainsboro  mt-24 mb-24 divider">
+        </div>
+
+
+        <!-- faqs -->
+
+        <style>
+            .unique-grid-container {
+                display: grid;
+                grid-template-columns: 1fr 2fr;
+                grid-template-rows: auto auto;
+                gap: 10px;
+            }
+
+            .unique-item1 {
+                grid-column: 1 / 2;
+                grid-row: 1 / 2;
+            }
+
+            .unique-item2 {
+                grid-column: 1 / 2;
+                grid-row: 2 / 3;
+            }
+
+            .unique-item3 {
+                grid-column: 2 / 3;
+                grid-row: 1 / 3;
+            }
+
+            /* Mobile view */
+            @media (max-width: 768px) {
+                .unique-grid-container {
+                    grid-template-columns: 1fr;
+                    grid-template-rows: auto auto auto;
+                }
+
+                .unique-item1 {
+                    grid-column: 1 / 2;
+                    grid-row: 1 / 2;
+                }
+
+                .unique-item2 {
+                    grid-column: 1 / 2;
+                    grid-row: 3 / 4;
+                }
+
+                .unique-item3 {
+                    grid-column: 1 / 2;
+                    grid-row: 2 / 3;
+                }
+
+                .faq-item {
+                    width: 75vw;
+                }
+
+                #faq-button-started {
+                    margin-top: 1rem;
+                    width: 80%;
+                    padding: 20px;
+                }
+            }
+
+            /* @media (min-width: 769px) {
+        .faq-item {
+          width: 85vw;
+        }
+      } */
+
+            .faq-item {
+                border: 1px solid lightgray;
+                border-radius: 0.5rem;
+                margin-top: 1rem;
+                padding: 1rem;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                width: 50vw;
+            }
+
+            .faq-item.expanded {
+                box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.16);
+                border-color: gainsboro;
+                background-color: white;
+            }
+
+            .faq-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .faq-content {
+                display: none;
+                margin-top: 1rem;
+            }
+
+            .faq-item.expanded .faq-content {
+                display: block;
+            }
+
+            .faq-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 24px;
+                height: 24px;
+                transition: transform 0.3s ease;
+            }
+
+            .faq-toggle svg {
+                width: 100%;
+                height: 100%;
+            }
+
+            .faq-item.expanded .faq-toggle {
+                transform: rotate(45deg);
+            }
+
+            @media (max-width: 769px) {
+                .faq-item {
+                    width: 75vw;
+                }
+
+                #faq-heading {
+                    text-align: center;
+                }
+
+                #faq-heading b {
+                    /* text-align: center; */
+                    font-size: 24px;
+                }
+            }
+        </style>
+
+        <div class="unique-grid-container relative">
+            <div class="unique-item1" id="faq-heading"><b class="text-[40px] leading-[40px]">FAQs</b></div>
+            <div class="unique-item2 absolute top-4">
+                <div class="rounded-29xl bg-royalblue w-[140px] h-fit text-center text-mid text-white flex justify-center items-center p-8 button cursor-pointer"
+                    id="faq-button-started">
+                    <b class="">Get Started</b>
+                </div>
+            </div>
+
+            <div class="unique-item3">
+                <!-- caution : skipped faq1 in numbering -->
+                <div id="faq2" class="faq-item expanded">
+                    <div class="faq-header">
+                        <b class="text-[16px]">What is a DSCR loan?</b>
+                        <div class="faq-toggle">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="min-w-[24px] min-h-[24px]">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="faq-content">
+                        <div class="text-[13px] leading-[22px]">
+                            “A DSCR loan, also known as a Debt Service Coverage Ratio loan, is a specialized financing
+                            option
+                            primarily utilized by real estate investors. It measures the property’s ability to generate
+                            enough cash
+                            flow to cover its debt obligations. Unlike traditional loans focusing on personal income
+                            verification,
+                            DSCR loans evaluate the property’s income potential to determine loan eligibility. This
+                            non-QM loan allows
+                            investors to qualify for financing based on their property’s cash flow.”
+                        </div>
+                    </div>
+                </div>
+                <div id="faq3" class="faq-item">
+                    <div class="faq-header">
+                        <b class="text-[16px]">Are there any fees associated with HomeAbroad services?</b>
+                        <div class="faq-toggle">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="min-w-[24px] min-h-[24px]">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="faq-content">
+                        <div class="text-[13px] leading-[22px]">
+                            HomeAbroad is a 100% free service for our customers.
+                        </div>
+                    </div>
+                </div>
+
+                <div id="faq4" class="faq-item">
+                    <div class="faq-header">
+                        <b class="text-[16px]">How do I know if I’m eligible for a DSCR Loan?</b>
+                        <div class="faq-toggle">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="min-w-[24px] min-h-[24px]">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="faq-content">
+                        <div class="text-[13px] leading-[22px]">
+                            To be eligible for a DSCR Loan, you must have a DSCR ratio of 1 or higher, i.e. your rental
+                            income should
+                            exceed your mortgage payment. Also, most lenders will require a minimum credit score of 620.
+                            Lastly, you
+                            need to pay a 20-25% down payment. You will most likely get the loan if you satisfy all
+                            these criteria.
+                        </div>
+                    </div>
+                </div>
+
+                <div id="faq5" class="faq-item">
+                    <div class="faq-header">
+                        <b class="text-[16px]">Is there a commitment to use your service?</b>
+                        <div class="faq-toggle">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="min-w-[24px] min-h-[24px]">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="faq-content">
+                        <div class="text-[13px] leading-[22px]">
+                            HomeAbroad is entirely free, and there is no obligation to hire any of the real estate
+                            agents or mortgage
+                            lenders that contact you. If you want more choices, we are happy to provide additional
+                            agents and lenders
+                            for comparison.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    if (item.classList.contains('expanded')) {
+                        // If the clicked item is already expanded, collapse it
+                        item.classList.remove('expanded');
+                    } else {
+                        // Collapse any currently expanded FAQ items
+                        document.querySelectorAll('.faq-item.expanded').forEach(expandedItem => {
+                            expandedItem.classList.remove('expanded');
+                        });
+                        // Expand the clicked FAQ item
+                        item.classList.add('expanded');
+                    }
+                });
+            });
+
+        </script>
+
+
+        <!-- divider + faq end-->
+        <div class="box-border w-[68vw] h-1 border-t-[0px] border-solid border-gainsboro  mt-24 mb-24 divider">
+        </div>
+
+
+    </div>
+
+    <!------------------------------------------------------------------------------------------------------------------------------- -->
+    <style>
+        .footer-grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 20px;
+        }
+
+        .footer-item1 {
+            grid-column: 1 / 2;
+        }
+
+        .footer-item2 {
+            grid-column: 2 / 3;
+        }
+
+        .footer-item3 {
+            grid-column: 3 / 4;
+        }
+
+        .footer-item4 {
+            grid-column: 4 / 5;
+        }
+
+        /* Mobile view */
+        @media (max-width: 768px) {
+            .footer-grid-container {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto auto;
+                margin-top: 30px;
+                width: 80%;
+            }
+
+            .footer-item1 {
+                grid-column: 1 / 2;
+                grid-row: 1 / 2;
+            }
+
+            .footer-item2 {
+                grid-column: 2 / 3;
+                grid-row: 1 / 2;
+            }
+
+            .footer-item3 {
+                grid-column: 1 / 2;
+                grid-row: 2 / 3;
+            }
+
+            .footer-item4 {
+                grid-column: 2 / 3;
+                grid-row: 2 / 3;
+            }
+
+            #footer {
+                flex-direction: column;
+                margin-left: 30px;
+                padding-top: 20px;
+                padding-bottom: 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+    <div class="flex justify-around pb-16 pt-16" id="footer">
+        <div class="leading-[30px] text-[20px]">
+            <p class="m-0">
+                <b>© HomeAbroad Inc. </b>
+            </p>
+            <p class="m-0 text-[15px] font-medium">NY License# 10311209401</p>
+        </div>
+
+        <div class="footer-grid-container flex justify-between w-3/5">
+            <div class="footer-item1">About Us</div>
+            <div class="footer-item2"> Privacy Policy</div>
+            <div class="footer-item3">Terms of Use</div>
+            <div class="footer-item4">Contact Us</div>
+        </div>
+    </div>
+</body>
+
+</html>
